@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@500;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* --- ESTÉTICA CYBER-MILITAR v3.7 --- */
+        /* --- ESTÉTICA CYBER-MILITAR v5.0 (FINAL) --- */
         body { 
             font-family: 'Rajdhani', sans-serif; 
             background-color: #020202; 
@@ -44,8 +44,19 @@
         }
         .scroll-container::-webkit-scrollbar { width: 4px; }
         .scroll-container::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        
+        /* CARROSSEL DE CHÁS */
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 16px;
+            padding-bottom: 10px;
+            scroll-behavior: smooth;
+        }
+        .carousel::-webkit-scrollbar { height: 4px; }
+        .carousel::-webkit-scrollbar-thumb { background: #00ff41; border-radius: 4px; }
 
-        /* SCANNER FX */
+        /* FX */
         .scan-line {
             position: absolute; top: 0; left: 0; width: 100%; height: 2px;
             background: rgba(0, 255, 65, 0.5);
@@ -68,17 +79,17 @@
         <div class="max-w-md w-full border border-[#00ff41]/30 p-6 rounded bg-[#050505] relative shadow-[0_0_50px_rgba(0,255,65,0.1)]">
             <div class="absolute top-0 left-0 w-full h-[1px] bg-[#00ff41] shadow-[0_0_10px_#00ff41]"></div>
             <h1 class="text-3xl text-[#00ff41] font-bold mb-2 tracking-widest neon-green">RADAR E'LITE <span class="blink">_</span></h1>
-            <p class="text-[10px] text-gray-500 tracking-[0.4em] mb-8 uppercase">Sistema de Bio-Hacking v3.7</p>
+            <p class="text-[10px] text-gray-500 tracking-[0.4em] mb-8 uppercase">Sistema de Bio-Hacking v5.0</p>
             <div class="text-left space-y-4 mb-8 text-xs text-gray-300 border-l-2 border-[#00ff41]/50 pl-4">
-                <p><strong class="text-white">> 1. CALIBRAGEM:</strong> Clique em <span class="text-cyan-400">[CALIBRAR]</span> no topo para ajustar seu peso e meta.</p>
-                <p><strong class="text-white">> 2. REGISTRO:</strong> Use os botões <span class="text-[#00ff41]">[+]</span> para logar alimentos e preencher a barra de energia.</p>
-                <p><strong class="text-white">> 3. CORTISOL:</strong> O painel vermelho monitora sua inflamação (Face/Barriga/Sono).</p>
-                <p><strong class="text-white">> 4. COMUNIDADE:</strong> Acesse o ícone do WhatsApp no topo esquerdo.</p>
+                <p><strong class="text-white">> 1. CALIBRAGEM:</strong> Ajuste peso e meta no menu superior.</p>
+                <p><strong class="text-white">> 2. REGISTRO:</strong> Logue alimentos para preencher a barra de energia.</p>
+                <p><strong class="text-white">> 3. CORTISOL:</strong> Ative modos específicos para alterar a matemática da dieta.</p>
+                <p><strong class="text-white">> 4. COMUNIDADE:</strong> Acesse o ícone do WhatsApp no topo.</p>
             </div>
             <button onclick="iniciarSistema()" class="w-full bg-[#00ff41] hover:bg-green-400 text-black font-bold py-4 rounded shadow-[0_0_20px_rgba(0,255,65,0.4)] transition-all text-sm tracking-widest uppercase flex items-center justify-center gap-2 group">
                 INICIALIZAR PROTOCOLO <i data-lucide="power" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
             </button>
-            <p class="mt-4 text-[9px] text-gray-600">ID DE ACESSO: #MEMBRO_VIP_BR</p>
+            <p class="mt-4 text-[9px] text-gray-600">DATABASE: 46 ITENS CARREGADOS</p>
         </div>
     </div>
 
@@ -88,9 +99,7 @@
             <div class="flex items-center gap-2 bg-black/90 backdrop-blur border border-[#00ff41]/50 p-2 rounded-full hover:bg-[#00ff41]/10 transition-all shadow-[0_0_10px_rgba(0,255,65,0.2)]">
                 <i data-lucide="users" class="w-4 h-4 text-white"></i>
                 <div class="w-[1px] h-3 bg-white/20"></div>
-                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-[#00ff41]" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                </svg>
+                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-[#00ff41]" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
             </div>
         </a>
 
@@ -156,32 +165,135 @@
         </header>
 
         <main class="flex-1 overflow-hidden relative">
-            
             <div id="screen-scanner" class="h-full scroll-container p-4 space-y-3 active-screen">
                 <div id="cortisol-section" class="mb-5"></div>
+                
+                <div id="suggestion-card" class="hidden mb-4">
+                    </div>
+
                 <div id="food-container" class="space-y-3"></div>
                 <div id="load-more-trigger" class="py-8 text-center hidden">
                     <button onclick="checkUnlock('pro')" class="text-xs text-amber-500 border border-amber-500/30 bg-amber-900/10 px-6 py-3 rounded-full hover:bg-amber-500 hover:text-black transition-all font-tech tracking-widest shadow-[0_0_15px_rgba(245,158,11,0.2)] flex items-center gap-2 mx-auto">
-                        <i data-lucide="lock" class="w-3 h-3"></i> + 35 ALIMENTOS (PREMIUM)
+                        <i data-lucide="lock" class="w-3 h-3"></i> + 28 ALIMENTOS (PREMIUM)
                     </button>
                 </div>
             </div>
 
             <div id="screen-detox" class="h-full scroll-container p-4 space-y-6 hidden-screen bg-black/90">
                 <div class="flex items-center justify-between mb-4 border-b border-green-500/30 pb-2">
-                    <h2 class="text-green-400 font-tech text-xl neon-green">PROTOCOLO DETOX // 24H</h2>
+                    <h2 class="text-green-400 font-tech text-xl neon-green">ARSENAL ALQUÍMICO</h2>
                     <button onclick="switchScreen('scanner')" class="text-xs text-gray-500 hover:text-white border border-gray-700 px-3 py-1 rounded">VOLTAR</button>
                 </div>
-                <div class="glass-card p-4 rounded border border-green-500/20">
-                    <div class="flex items-center gap-2 mb-3">
-                        <i data-lucide="timer" class="text-green-500 w-5 h-5"></i>
-                        <h3 class="font-bold text-white tracking-wider">FASE 1: AUTOFAGIA (16H)</h3>
+                
+                <div class="carousel snap-x">
+                    
+                    <div class="min-w-[280px] snap-center bg-gradient-to-br from-yellow-900/40 to-black p-4 rounded-xl border border-yellow-500/30 relative overflow-hidden group">
+                        <div class="absolute -top-4 -right-4 w-20 h-20 bg-yellow-500/20 rounded-full blur-xl"></div>
+                        <h3 class="text-yellow-400 font-bold text-lg leading-tight mb-1">AÇAFRÃO & PIMENTA</h3>
+                        <p class="text-[10px] text-yellow-200/70 tracking-widest uppercase mb-3">O Anti-Inflamatório</p>
+                        <div class="space-y-2 text-xs text-gray-300 bg-black/40 p-2 rounded">
+                            <p>• 1 colher chá Açafrão</p>
+                            <p>• 1 pitada Pimenta Reino</p>
+                            <p>• 1/2 Limão + 250ml água quente</p>
+                        </div>
+                        <div class="mt-3 text-[10px] text-yellow-500 font-bold border-t border-yellow-500/20 pt-2">
+                            SEGREDO: A pimenta ativa o açafrão 2000x.
+                        </div>
                     </div>
-                    <ul class="text-xs text-gray-300 space-y-2 list-disc pl-4">
-                        <li>Jantar até as 20h (Apenas Proteína + Folhas).</li>
-                        <li>Apenas água/café até 12h do dia seguinte.</li>
-                    </ul>
+
+                    <div class="min-w-[280px] snap-center bg-gradient-to-br from-purple-900/40 to-black p-4 rounded-xl border border-purple-500/30 relative overflow-hidden group">
+                        <div class="absolute -top-4 -right-4 w-20 h-20 bg-purple-500/20 rounded-full blur-xl"></div>
+                        <h3 class="text-purple-400 font-bold text-lg leading-tight mb-1">CASCA DE BANANA</h3>
+                        <p class="text-[10px] text-purple-200/70 tracking-widest uppercase mb-3">Dormir Profundo</p>
+                        <div class="space-y-2 text-xs text-gray-300 bg-black/40 p-2 rounded">
+                            <p>• Casca de 1 Banana</p>
+                            <p>• 1 sachê Camomila</p>
+                            <p>• 1 pitada de Canela</p>
+                        </div>
+                        <div class="mt-3 text-[10px] text-purple-500 font-bold border-t border-purple-500/20 pt-2">
+                            SEGREDO: Rico em Magnésio natural.
+                        </div>
+                    </div>
+
+                    <div class="min-w-[280px] snap-center bg-gradient-to-br from-green-900/40 to-black p-4 rounded-xl border border-green-500/30 relative overflow-hidden group">
+                        <div class="absolute -top-4 -right-4 w-20 h-20 bg-green-500/20 rounded-full blur-xl"></div>
+                        <h3 class="text-green-400 font-bold text-lg leading-tight mb-1">SHOT MATCHA</h3>
+                        <p class="text-[10px] text-green-200/70 tracking-widest uppercase mb-3">Alcalinizante Matinal</p>
+                        <div class="space-y-2 text-xs text-gray-300 bg-black/40 p-2 rounded">
+                            <p>• 1/2 colher chá Matcha</p>
+                            <p>• 1/2 Limão</p>
+                            <p>• 1 pitada Gengibre em pó</p>
+                        </div>
+                        <div class="mt-3 text-[10px] text-green-500 font-bold border-t border-green-500/20 pt-2">
+                            SEGREDO: Acelera metabolismo em 17%.
+                        </div>
+                    </div>
+
+                    <div class="min-w-[280px] snap-center bg-gradient-to-br from-orange-900/40 to-black p-4 rounded-xl border border-orange-500/30 relative overflow-hidden group">
+                        <div class="absolute -top-4 -right-4 w-20 h-20 bg-orange-500/20 rounded-full blur-xl"></div>
+                        <h3 class="text-orange-400 font-bold text-lg leading-tight mb-1">ABACAXI & CANELA</h3>
+                        <p class="text-[10px] text-orange-200/70 tracking-widest uppercase mb-3">Queima Gordura</p>
+                        <div class="space-y-2 text-xs text-gray-300 bg-black/40 p-2 rounded">
+                            <p>• Cascas de 1/2 Abacaxi</p>
+                            <p>• 1 pau de Canela + Gengibre</p>
+                            <p>• Ferver 15 min em 1L água</p>
+                        </div>
+                        <div class="mt-3 text-[10px] text-orange-500 font-bold border-t border-orange-500/20 pt-2">
+                            SEGREDO: A bromelina quebra a inflamação.
+                        </div>
+                    </div>
+
+                    <div class="min-w-[280px] snap-center bg-gradient-to-br from-pink-900/40 to-black p-4 rounded-xl border border-pink-500/30 relative overflow-hidden group">
+                        <div class="absolute -top-4 -right-4 w-20 h-20 bg-pink-500/20 rounded-full blur-xl"></div>
+                        <h3 class="text-pink-400 font-bold text-lg leading-tight mb-1">HIBISCO & LOURO</h3>
+                        <p class="text-[10px] text-pink-200/70 tracking-widest uppercase mb-3">Adeus Retenção</p>
+                        <div class="space-y-2 text-xs text-gray-300 bg-black/40 p-2 rounded">
+                            <p>• 1 colher sopa Hibisco</p>
+                            <p>• 3 folhas Louro Seco</p>
+                            <p>• 1 rama Canela (Infusão 10 min)</p>
+                        </div>
+                        <div class="mt-3 text-[10px] text-pink-500 font-bold border-t border-pink-500/20 pt-2">
+                            SEGREDO: O louro reduz o cortisol.
+                        </div>
+                    </div>
                 </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-[#00ff41] font-tech text-xl neon-green border-b border-white/10 pb-2">DOSSIÊ: JEJUM 16H</h2>
+                    
+                    <div class="glass-card p-4 rounded border-l-2 border-[#00ff41]">
+                        <h3 class="text-white font-bold text-sm mb-2 flex items-center gap-2"><i data-lucide="microscope" class="w-4 h-4 text-[#00ff41]"></i> A CIÊNCIA (AUTOFAGIA)</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Após 12-14 horas sem comer, seu corpo esgota o glicogênio e começa a <strong>"comer" células velhas e inflamatórias</strong> para gerar energia. Isso reduz o inchaço sistêmico e a resistência à insulina. É uma faxina biológica.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-4 rounded border-l-2 border-blue-500">
+                        <h3 class="text-white font-bold text-sm mb-2 flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-blue-500"></i> CRONOGRAMA TÁTICO</h3>
+                        <div class="space-y-3">
+                            <div class="flex gap-3">
+                                <span class="text-blue-400 font-tech font-bold text-xs w-12">20:00</span>
+                                <div class="text-xs text-gray-300"><strong class="text-white">Última Refeição:</strong> Proteína + Folhas. Evite carboidratos para acelerar a entrada na cetose.</div>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="text-blue-400 font-tech font-bold text-xs w-12">08:00</span>
+                                <div class="text-xs text-gray-300"><strong class="text-white">Janela de Jejum:</strong> Apenas Água, Café preto (sem açúcar) e Chás do arsenal acima.</div>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="text-blue-400 font-tech font-bold text-xs w-12">12:00</span>
+                                <div class="text-xs text-gray-300"><strong class="text-white">Quebra (Almoço):</strong> Comece pela salada e proteína. O carboidrato vem por último.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-red-900/20 p-3 rounded border border-red-500/30 flex gap-3 items-center">
+                        <i data-lucide="alert-circle" class="text-red-500 w-6 h-6"></i>
+                        <div class="text-xs text-red-200">
+                            <strong>SOS FOME:</strong> Sentiu fraqueza? Uma pitada de sal na língua ou água com gás resolvem. Não quebra o jejum.
+                        </div>
+                    </div>
+                </div>
+
                 <div class="p-8"></div>
             </div>
         </main>
@@ -266,7 +378,7 @@
                             <span class="text-2xl">🧱</span>
                             <div>
                                 <div class="font-bold text-white text-sm group-hover:text-amber-400">BARRIGA (STRUCTURE)</div>
-                                <div class="text-[10px] text-gray-500">Protocolo Cimento + Jejum</div>
+                                <div class="text-[10px] text-gray-500">Protocolo Cimento + Jejum (Low Carb)</div>
                             </div>
                         </div>
                     </button>
@@ -280,9 +392,6 @@
                         </div>
                     </button>
                 </div>
-                <p class="text-[9px] text-gray-600 mt-6 text-center italic border-t border-white/5 pt-4">
-                    <i data-lucide="lock" class="w-3 h-3 inline mr-1"></i> Acesso aos protocolos requer Bio-Pass.
-                </p>
             </div>
         </div>
     </div>
@@ -316,7 +425,6 @@
                             </div>
                         </a>
                     </div>
-                    <p class="text-[8px] text-gray-600 mt-4">Renovação automática. Cancele quando quiser.</p>
                 </div>
             </div>
         </div>
@@ -338,6 +446,7 @@
         };
 
         const db = [
+            // BÁSICOS
             { id: 'b1', name: 'Peito de Frango', unit: '1 Filé Médio', icon: '🍗', type: 'prot', kcal: 150, p: 31, c: 0, f: 3.5, isPremium: false },
             { id: 'b2', name: 'Ovo Cozido', unit: '1 Unidade', icon: '🥚', type: 'prot', kcal: 78, p: 6, c: 0.5, f: 5, isPremium: false },
             { id: 'b3', name: 'Arroz Branco', unit: '1 Colher Servir', icon: '🍚', type: 'carb', kcal: 60, p: 2, c: 14, f: 0, isPremium: false },
@@ -346,16 +455,45 @@
             { id: 'b6', name: 'Salada Mix', unit: 'Prato Cheio', icon: '🥬', type: 'veg', kcal: 15, p: 1, c: 3, f: 0, isPremium: false },
             { id: 'b7', name: 'Azeite Oliva', unit: '1 Fio', icon: '🫒', type: 'fat', kcal: 80, p: 0, c: 0, f: 9, isPremium: false },
             { id: 'b8', name: 'Batata Inglesa', unit: '1 Média', icon: '🥔', type: 'carb', kcal: 85, p: 2, c: 20, f: 0, isPremium: false },
+            // PREMIUM
             { id: 'p1', name: 'Whey Protein', unit: '1 Scoop', icon: '🥤', type: 'prot', kcal: 120, p: 24, c: 3, f: 1, isPremium: true },
             { id: 'p2', name: 'Iogurte Grego', unit: '1 Pote', icon: '🥣', type: 'prot', kcal: 60, p: 10, c: 4, f: 0, isPremium: true },
             { id: 'p3', name: 'Tilápia', unit: '1 Filé', icon: '🐟', type: 'prot', kcal: 100, p: 20, c: 0, f: 2, isPremium: true },
             { id: 'p4', name: 'Carne Moída', unit: '4 Colheres', icon: '🥩', type: 'prot', kcal: 220, p: 30, c: 0, f: 10, isPremium: true },
             { id: 'p5', name: 'Tapioca', unit: '1 Goma', icon: '🌮', type: 'carb', kcal: 100, p: 0, c: 25, f: 0, isPremium: true },
             { id: 'p6', name: 'Pão Integral', unit: '2 Fatias', icon: '🍞', type: 'carb', kcal: 120, p: 6, c: 22, f: 2, isPremium: true },
-            { id: 'p7', name: 'Chocolate', unit: '3 Quadradinhos', icon: '🍫', type: 'fat', kcal: 130, p: 2, c: 15, f: 7, isPremium: true },
+            { id: 'p7', name: 'Chocolate 70%', unit: '3 Quadradinhos', icon: '🍫', type: 'fat', kcal: 130, p: 2, c: 15, f: 7, isPremium: true },
             { id: 'p8', name: 'Abacate', unit: '2 Colheres', icon: '🥑', type: 'fat', kcal: 90, p: 1, c: 4, f: 8, isPremium: true },
             { id: 'p9', name: 'Pasta Amendoim', unit: '1 Colher', icon: '🥜', type: 'fat', kcal: 90, p: 4, c: 3, f: 8, isPremium: true },
             { id: 'p10', name: 'Sushi Combo', unit: '8 Peças', icon: '🍣', type: 'cheat', kcal: 400, p: 12, c: 60, f: 10, isPremium: true },
+            { id: 'p11', name: 'Salmão Grelhado', unit: '1 Filé', icon: '🐟', type: 'prot', kcal: 200, p: 22, c: 0, f: 12, isPremium: true },
+            { id: 'p12', name: 'Batata Doce', unit: '1 Média', icon: '🍠', type: 'carb', kcal: 86, p: 1.6, c: 20, f: 0.1, isPremium: true },
+            { id: 'p13', name: 'Brócolis', unit: '1 Pires', icon: '🥦', type: 'veg', kcal: 25, p: 2, c: 4, f: 0, isPremium: true },
+            { id: 'p14', name: 'Aveia em Flocos', unit: '2 Colheres', icon: '🌾', type: 'carb', kcal: 104, p: 4, c: 17, f: 2, isPremium: true },
+            { id: 'p15', name: 'Maçã', unit: '1 Unidade', icon: '🍎', type: 'carb', kcal: 52, p: 0, c: 14, f: 0, isPremium: true },
+            { id: 'p16', name: 'Queijo Cottage', unit: '2 Colheres', icon: '🧀', type: 'prot', kcal: 45, p: 6, c: 1, f: 2, isPremium: true },
+            { id: 'p17', name: 'Atum (Lata)', unit: '1 Lata (água)', icon: '🥫', type: 'prot', kcal: 120, p: 26, c: 0, f: 1, isPremium: true },
+            { id: 'p18', name: 'Castanha Pará', unit: '2 Unidades', icon: '🌰', type: 'fat', kcal: 55, p: 1, c: 1, f: 5, isPremium: true },
+            { id: 'p19', name: 'Macarrão Int.', unit: '1 Pegador', icon: '🍝', type: 'carb', kcal: 180, p: 7, c: 35, f: 1, isPremium: true },
+            { id: 'p20', name: 'Hambúrguer (Caseiro)', unit: '1 Unidade', icon: '🍔', type: 'prot', kcal: 250, p: 25, c: 0, f: 18, isPremium: true },
+            { id: 'p21', name: 'Pizza', unit: '1 Fatia', icon: '🍕', type: 'cheat', kcal: 280, p: 10, c: 30, f: 12, isPremium: true },
+            { id: 'p22', name: 'Cerveja', unit: '1 Lata', icon: '🍺', type: 'cheat', kcal: 150, p: 0, c: 12, f: 0, isPremium: true },
+            { id: 'p23', name: 'Refrigerante', unit: '1 Lata', icon: '🥤', type: 'cheat', kcal: 140, p: 0, c: 35, f: 0, isPremium: true },
+            { id: 'p24', name: 'Açaí (Puro)', unit: '1 Copo peq.', icon: '🍧', type: 'carb', kcal: 150, p: 2, c: 10, f: 10, isPremium: true },
+            { id: 'p25', name: 'Cuscuz', unit: '1 Fatia', icon: '🌽', type: 'carb', kcal: 110, p: 3, c: 23, f: 0, isPremium: true },
+            { id: 'p26', name: 'Melancia', unit: '1 Fatia', icon: '🍉', type: 'carb', kcal: 30, p: 0, c: 8, f: 0, isPremium: true },
+            { id: 'p27', name: 'Pipoca', unit: '1 Saco Peq', icon: '🍿', type: 'carb', kcal: 100, p: 3, c: 15, f: 4, isPremium: true },
+            { id: 'p28', name: 'Camarão', unit: '1 Porção', icon: '🦐', type: 'prot', kcal: 90, p: 20, c: 0, f: 1, isPremium: true },
+            { id: 'p29', name: 'Leite Desn.', unit: '1 Copo', icon: '🥛', type: 'prot', kcal: 70, p: 7, c: 10, f: 0, isPremium: true },
+            { id: 'p30', name: 'Morango', unit: '5 Unidades', icon: '🍓', type: 'carb', kcal: 20, p: 0, c: 5, f: 0, isPremium: true },
+            { id: 'p31', name: 'Tofu', unit: '1 Fatia', icon: '🧊', type: 'prot', kcal: 70, p: 8, c: 2, f: 4, isPremium: true },
+            { id: 'p32', name: 'Lentilha', unit: '1 Concha', icon: '🍲', type: 'carb', kcal: 120, p: 9, c: 20, f: 0, isPremium: true },
+            { id: 'p33', name: 'Coco Seco', unit: '1 Pedaço', icon: '🥥', type: 'fat', kcal: 100, p: 1, c: 4, f: 9, isPremium: true },
+            { id: 'p34', name: 'Bolo', unit: '1 Fatia Peq', icon: '🍰', type: 'cheat', kcal: 250, p: 3, c: 40, f: 10, isPremium: true },
+            { id: 'p35', name: 'Kiwi', unit: '1 Unidade', icon: '🥝', type: 'carb', kcal: 40, p: 1, c: 10, f: 0, isPremium: true },
+            { id: 'p36', name: 'Nozes', unit: '3 Unidades', icon: '🥜', type: 'fat', kcal: 80, p: 2, c: 2, f: 8, isPremium: true },
+            { id: 'p37', name: 'Ricota', unit: '1 Fatia Grossa', icon: '🧀', type: 'prot', kcal: 50, p: 4, c: 1, f: 3, isPremium: true },
+            { id: 'p38', name: 'Gelatina', unit: '1 Taça', icon: '🍮', type: 'cheat', kcal: 60, p: 1, c: 14, f: 0, isPremium: true }
         ];
 
         let user = { 
@@ -394,12 +532,12 @@
             let data = { icon: '', title: '', color: 'gray', metric1Label: '', metric1Value: '', metric2Label: '', metric2Value: '', tip: '' };
             if(mode === 'FACE') {
                 data.icon = '🐡'; data.title = 'PROTOCOLO DRENAGEM'; data.color = 'blue';
-                data.metric1Label = 'META ÁGUA (DRENAR)'; data.metric1Value = (user.weight * 0.055).toFixed(1) + ' L';
+                data.metric1Label = 'META ÁGUA (DRENAR)'; data.metric1Value = (user.weight * 0.055).toFixed(1) + ' L'; 
                 data.metric2Label = 'LIMITE SÓDIO'; data.metric2Value = 'BAIXO (<2g)';
                 data.tip = 'Corte o sal após as 18h. Use Chá de Cavalinha.';
             } else if (mode === 'BELLY') {
                 data.icon = '🧱'; data.title = 'PROTOCOLO ESTRUTURA'; data.color = 'amber';
-                data.metric1Label = 'PROTEÍNA (CIMENTO)'; data.metric1Value = Math.round(user.weight * 2.2) + 'g';
+                data.metric1Label = 'PROTEÍNA (CIMENTO)'; data.metric1Value = Math.round(user.weight * 2.5) + 'g'; 
                 data.metric2Label = 'JANELA JEJUM'; data.metric2Value = '14 HORAS';
                 data.tip = 'Foque a proteína no café da manhã para firmar.';
             } else if (mode === 'SLEEP') {
@@ -419,6 +557,22 @@
             } else {
                 user.activeCortisolMode = mode;
                 document.getElementById('modal-cortisol').classList.add('hidden');
+                
+                // INJETA O CARD DE SUGESTÃO (AQUI O SEGREDO)
+                const suggestionCard = document.getElementById('suggestion-card');
+                suggestionCard.classList.remove('hidden');
+                let suggHTML = '';
+                
+                if (mode === 'FACE') {
+                    suggHTML = `<div class="bg-blue-900/20 border border-blue-500/30 p-3 rounded flex items-center gap-3"><div class="text-2xl">🌺</div><div><div class="text-[10px] text-blue-400 font-bold uppercase">SUGESTÃO DE TRATAMENTO</div><div class="text-xs text-white">Beba o <span class="text-blue-300 font-bold">Chá de Hibisco</span> após o almoço para drenar.</div></div></div>`;
+                } else if (mode === 'BELLY') {
+                    suggHTML = `<div class="bg-green-900/20 border border-green-500/30 p-3 rounded flex items-center gap-3"><div class="text-2xl">🍵</div><div><div class="text-[10px] text-green-400 font-bold uppercase">SUGESTÃO DE TRATAMENTO</div><div class="text-xs text-white">Inicie o dia com <span class="text-green-300 font-bold">Shot Matcha</span> para acelerar a queima.</div></div></div>`;
+                } else if (mode === 'SLEEP') {
+                    suggHTML = `<div class="bg-purple-900/20 border border-purple-500/30 p-3 rounded flex items-center gap-3"><div class="text-2xl">🍌</div><div><div class="text-[10px] text-purple-400 font-bold uppercase">SUGESTÃO DE TRATAMENTO</div><div class="text-xs text-white">Prepare o <span class="text-purple-300 font-bold">Chá de Banana</span> 1h antes de dormir.</div></div></div>`;
+                }
+                suggestionCard.innerHTML = suggHTML;
+
+                calcMacros(); // RECALCULA A DIETA
                 renderCortisolSection();
             }
         }
@@ -440,14 +594,33 @@
         function calcMacros() {
             let tmb = (10 * user.weight) + (6.25 * user.height) - (5 * user.age) + ((user.gender === 'M') ? 5 : -161);
             let maintenance = tmb * 1.35;
+            
+            // LÓGICA BASE
             if(user.goal === 'cut') user.targetKcal = Math.round(maintenance - 400);
             else if(user.goal === 'maintain') user.targetKcal = Math.round(maintenance);
             else user.targetKcal = Math.round(maintenance + 300);
-            user.targetProt = Math.round(user.weight * 2.0); 
-            let pKcal = user.targetProt * 4;
-            user.targetFat = Math.round(user.weight * 0.9);
-            let fKcal = user.targetFat * 9;
-            user.targetCarb = Math.max(0, Math.round((user.targetKcal - pKcal - fKcal) / 4));
+
+            // --- LÓGICA DUAL-CORE (CORTISOL) ---
+            if (user.activeCortisolMode === 'BELLY') {
+                user.targetProt = Math.round(user.weight * 2.5); // Proteína Alta
+                user.targetCarb = 50; // Low Carb Travado
+                let pKcal = user.targetProt * 4;
+                let cKcal = user.targetCarb * 4;
+                user.targetFat = Math.round((user.targetKcal - pKcal - cKcal) / 9);
+            } else if (user.activeCortisolMode === 'FACE') {
+                user.targetProt = Math.round(user.weight * 2.0);
+                user.targetFat = Math.round(user.weight * 0.8);
+                let pKcal = user.targetProt * 4;
+                let fKcal = user.targetFat * 9;
+                user.targetCarb = Math.max(0, Math.round((user.targetKcal - pKcal - fKcal) / 4));
+            } else {
+                user.targetProt = Math.round(user.weight * 2.0);
+                let pKcal = user.targetProt * 4;
+                user.targetFat = Math.round(user.weight * 0.9);
+                let fKcal = user.targetFat * 9;
+                user.targetCarb = Math.max(0, Math.round((user.targetKcal - pKcal - fKcal) / 4));
+            }
+            
             document.getElementById('target-kcal').innerText = user.targetKcal;
         }
 
