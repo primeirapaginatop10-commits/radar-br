@@ -8,21 +8,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@500;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* --- ESTÉTICA CYBER-MILITAR v3.5 (CORTISOL UPDATE) --- */
+        /* --- ESTÉTICA CYBER-MILITAR v3.7 --- */
         body { 
             font-family: 'Rajdhani', sans-serif; 
             background-color: #020202; 
             color: #e0e0e0;
             overflow: hidden;
+            user-select: none;
         }
         .font-tech { font-family: 'Share Tech Mono', monospace; }
         
-        /* NEONS */
+        /* NEONS & FX */
         .neon-green { text-shadow: 0 0 10px rgba(0, 255, 65, 0.6); }
         .neon-cyan { text-shadow: 0 0 10px rgba(6, 182, 212, 0.6); }
-        .neon-gold { text-shadow: 0 0 10px rgba(245, 158, 11, 0.6); }
-        .neon-red { text-shadow: 0 0 10px rgba(239, 68, 68, 0.8); }
-        
+        .blink { animation: blink 1s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
         /* PAINÉIS */
         .glass-panel { 
             background: rgba(8, 8, 12, 0.98); 
@@ -34,11 +35,6 @@
             background: linear-gradient(145deg, rgba(25, 25, 30, 0.6) 0%, rgba(10, 10, 15, 0.4) 100%); 
             border: 1px solid rgba(255,255,255,0.05); 
         }
-        .cortisol-card {
-            background: linear-gradient(90deg, rgba(30, 10, 10, 0.9) 0%, rgba(50, 0, 0, 0.4) 100%);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            box-shadow: 0 0 15px rgba(239, 68, 68, 0.1);
-        }
 
         /* SCROLL TÁTICO */
         .scroll-container {
@@ -49,7 +45,7 @@
         .scroll-container::-webkit-scrollbar { width: 4px; }
         .scroll-container::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
 
-        /* FX */
+        /* SCANNER FX */
         .scan-line {
             position: absolute; top: 0; left: 0; width: 100%; height: 2px;
             background: rgba(0, 255, 65, 0.5);
@@ -61,21 +57,47 @@
         .pulse-red { animation: pulseRed 2s infinite; }
         @keyframes pulseRed { 0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); } 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } }
 
-        /* UTILITÁRIOS */
         .hidden-screen { display: none !important; }
         .active-screen { display: block !important; animation: fadeIn 0.5s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
-<body class="antialiased h-screen flex flex-col">
+<body class="antialiased h-screen flex flex-col relative">
+
+    <div id="boot-screen" class="fixed inset-0 z-[10000] bg-[#020202] flex flex-col justify-center items-center p-6 text-center font-tech">
+        <div class="max-w-md w-full border border-[#00ff41]/30 p-6 rounded bg-[#050505] relative shadow-[0_0_50px_rgba(0,255,65,0.1)]">
+            <div class="absolute top-0 left-0 w-full h-[1px] bg-[#00ff41] shadow-[0_0_10px_#00ff41]"></div>
+            <h1 class="text-3xl text-[#00ff41] font-bold mb-2 tracking-widest neon-green">RADAR E'LITE <span class="blink">_</span></h1>
+            <p class="text-[10px] text-gray-500 tracking-[0.4em] mb-8 uppercase">Sistema de Bio-Hacking v3.7</p>
+            <div class="text-left space-y-4 mb-8 text-xs text-gray-300 border-l-2 border-[#00ff41]/50 pl-4">
+                <p><strong class="text-white">> 1. CALIBRAGEM:</strong> Clique em <span class="text-cyan-400">[CALIBRAR]</span> no topo para ajustar seu peso e meta.</p>
+                <p><strong class="text-white">> 2. REGISTRO:</strong> Use os botões <span class="text-[#00ff41]">[+]</span> para logar alimentos e preencher a barra de energia.</p>
+                <p><strong class="text-white">> 3. CORTISOL:</strong> O painel vermelho monitora sua inflamação (Face/Barriga/Sono).</p>
+                <p><strong class="text-white">> 4. COMUNIDADE:</strong> Acesse o ícone do WhatsApp no topo esquerdo.</p>
+            </div>
+            <button onclick="iniciarSistema()" class="w-full bg-[#00ff41] hover:bg-green-400 text-black font-bold py-4 rounded shadow-[0_0_20px_rgba(0,255,65,0.4)] transition-all text-sm tracking-widest uppercase flex items-center justify-center gap-2 group">
+                INICIALIZAR PROTOCOLO <i data-lucide="power" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+            </button>
+            <p class="mt-4 text-[9px] text-gray-600">ID DE ACESSO: #MEMBRO_VIP_BR</p>
+        </div>
+    </div>
 
     <div id="app-shell" class="max-w-md mx-auto w-full bg-[#050505] h-full relative shadow-2xl border-x border-white/5 flex flex-col">
         
+        <a href="https://chat.whatsapp.com/D0xXQrLADDF0mWg7sCqlyh?mode=gi_t" target="_blank" class="absolute top-3 left-4 z-[9000] group">
+            <div class="flex items-center gap-2 bg-black/90 backdrop-blur border border-[#00ff41]/50 p-2 rounded-full hover:bg-[#00ff41]/10 transition-all shadow-[0_0_10px_rgba(0,255,65,0.2)]">
+                <i data-lucide="users" class="w-4 h-4 text-white"></i>
+                <div class="w-[1px] h-3 bg-white/20"></div>
+                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-[#00ff41]" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+            </div>
+        </a>
+
         <header class="z-50 glass-panel shrink-0 relative">
-            <div class="flex justify-between items-center px-4 py-3 border-b border-white/5">
+            <div class="flex justify-between items-center px-4 py-3 border-b border-white/5 pl-24"> 
                 <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 bg-[#00ff41] rounded-full animate-pulse shadow-[0_0_8px_#00ff41]"></div>
-                    <h1 class="font-tech text-lg text-white tracking-widest"><span class="text-[#00ff41] neon-green">RADAR</span> E'LITE</h1>
+                    <h1 class="font-tech text-lg text-white tracking-widest"><span class="text-[#00ff41] neon-green">RADAR</span></h1>
                 </div>
                 
                 <button onclick="toggleConfig()" class="flex items-center gap-2 px-3 py-1.5 bg-cyan-900/20 rounded border border-cyan-500/50 hover:bg-cyan-500/20 transition-all shadow-[0_0_10px_rgba(6,182,212,0.15)] group">
@@ -136,11 +158,8 @@
         <main class="flex-1 overflow-hidden relative">
             
             <div id="screen-scanner" class="h-full scroll-container p-4 space-y-3 active-screen">
-                
-                <div id="cortisol-section" class="mb-5">
-                    </div>
+                <div id="cortisol-section" class="mb-5"></div>
                 <div id="food-container" class="space-y-3"></div>
-                
                 <div id="load-more-trigger" class="py-8 text-center hidden">
                     <button onclick="checkUnlock('pro')" class="text-xs text-amber-500 border border-amber-500/30 bg-amber-900/10 px-6 py-3 rounded-full hover:bg-amber-500 hover:text-black transition-all font-tech tracking-widest shadow-[0_0_15px_rgba(245,158,11,0.2)] flex items-center gap-2 mx-auto">
                         <i data-lucide="lock" class="w-3 h-3"></i> + 35 ALIMENTOS (PREMIUM)
@@ -165,7 +184,6 @@
                 </div>
                 <div class="p-8"></div>
             </div>
-
         </main>
 
         <footer class="shrink-0 bg-black/95 border-t border-white/10 backdrop-blur-xl z-50 pb-6 pt-2 shadow-[0_-5px_20px_rgba(0,0,0,0.8)]">
@@ -175,20 +193,17 @@
                     <i data-lucide="zap" class="text-gray-400 group-hover:text-green-400 w-5 h-5 mb-1 transition-colors"></i>
                     <span class="text-[9px] font-tech text-gray-500 tracking-wider group-hover:text-green-400 transition-colors">DETOX</span>
                 </button>
-
                 <button onclick="checkUnlock('pro')" class="relative group flex flex-col items-center justify-center p-3 rounded hover:bg-white/5 transition-colors border-x border-white/5">
                     <div id="lock-pro" class="absolute top-2 right-4 text-amber-500 opacity-100 transition-opacity drop-shadow-[0_0_5px_rgba(245,158,11,0.8)]"><i data-lucide="lock" class="w-3 h-3"></i></div>
                     <i data-lucide="scan-eye" class="text-cyan-500 w-6 h-6 mb-1 drop-shadow-[0_0_8px_rgba(6,182,212,0.6)]"></i>
                     <span class="text-[10px] font-tech text-white font-bold tracking-wider neon-cyan">UPGRADE</span>
                 </button>
-
                 <button onclick="openTitanModal()" class="relative group flex flex-col items-center justify-center p-3 rounded hover:bg-white/5 transition-colors">
                     <i data-lucide="swords" class="text-gray-400 group-hover:text-orange-500 w-5 h-5 mb-1 transition-colors"></i>
                     <span class="text-[9px] font-tech text-gray-500 tracking-wider group-hover:text-orange-500 transition-colors">TITAN</span>
                 </button>
             </div>
         </footer>
-
     </div>
 
     <div id="config-panel" class="absolute top-0 left-0 w-full h-full bg-[#050505]/95 backdrop-blur-xl z-[60] p-6 hidden flex flex-col justify-center animate-fade-in">
@@ -232,12 +247,10 @@
         <div class="w-full max-w-sm p-1 rounded-xl bg-gradient-to-b from-red-900 to-black shadow-[0_0_60px_rgba(220,38,38,0.3)]">
             <div class="bg-black rounded-lg p-6 relative overflow-hidden h-full">
                 <button onclick="document.getElementById('modal-cortisol').classList.add('hidden')" class="absolute top-4 right-4 text-gray-500 hover:text-white z-20"><i data-lucide="x" class="w-6 h-6"></i></button>
-                
                 <div class="text-center mb-6">
                     <h2 class="font-tech text-xl text-white font-bold mb-1 neon-red">SELETOR TÁTICO</h2>
                     <p class="text-[10px] text-red-400 tracking-[0.2em] uppercase">Rastreamento de Inflamação</p>
                 </div>
-
                 <div class="space-y-3">
                     <button onclick="selectCortisolMode('FACE')" class="w-full glass-card p-4 rounded hover:border-blue-400 hover:bg-blue-900/10 transition-all group text-left relative overflow-hidden">
                         <div class="flex items-center gap-4 relative z-10">
@@ -248,7 +261,6 @@
                             </div>
                         </div>
                     </button>
-
                     <button onclick="selectCortisolMode('BELLY')" class="w-full glass-card p-4 rounded hover:border-amber-400 hover:bg-amber-900/10 transition-all group text-left relative overflow-hidden">
                         <div class="flex items-center gap-4 relative z-10">
                             <span class="text-2xl">🧱</span>
@@ -258,7 +270,6 @@
                             </div>
                         </div>
                     </button>
-
                     <button onclick="selectCortisolMode('SLEEP')" class="w-full glass-card p-4 rounded hover:border-purple-400 hover:bg-purple-900/10 transition-all group text-left relative overflow-hidden">
                         <div class="flex items-center gap-4 relative z-10">
                             <span class="text-2xl">🌙</span>
@@ -269,7 +280,6 @@
                         </div>
                     </button>
                 </div>
-                
                 <p class="text-[9px] text-gray-600 mt-6 text-center italic border-t border-white/5 pt-4">
                     <i data-lucide="lock" class="w-3 h-3 inline mr-1"></i> Acesso aos protocolos requer Bio-Pass.
                 </p>
@@ -313,11 +323,18 @@
     </div>
 
     <script>
-        // CONFIGURAÇÃO DOS LINKS - O CORTISOL ENTRA AQUI!
+        function iniciarSistema() {
+            const boot = document.getElementById('boot-screen');
+            boot.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+            boot.style.opacity = "0";
+            boot.style.transform = "scale(1.1)"; 
+            setTimeout(() => { boot.style.display = "none"; }, 800);
+        }
+
         const LINKS = { 
             detox: "https://pay.kiwify.com.br/Xt7MUif", 
             pro: "https://pay.kiwify.com.br/Vf9er4u",
-            cortisol: "SEU_LINK_DE_CHECKOUT_AQUI" // <--- BOTE O LINK DE 19,90 AQUI
+            cortisol: "SEU_LINK_DE_CHECKOUT_AQUI" 
         };
 
         const db = [
@@ -345,7 +362,6 @@
             gender: 'F', weight: 65, height: 165, age: 28, goal: 'cut', 
             targetKcal: 0, targetProt: 0, targetCarb: 0, targetFat: 0, 
             isPro: false, detoxUnlocked: false,
-            // NOVAS VARIÁVEIS CORTISOL
             cortisolUnlocked: false,
             activeCortisolMode: null 
         };
@@ -356,74 +372,20 @@
             const params = new URLSearchParams(window.location.search);
             if(params.get('unlock') === 'pro') unlock('pro');
             if(params.get('unlock') === 'detox') user.detoxUnlocked = true;
-            // CHECKOUT VOLTA COM ?unlock=cortisol
             if(params.get('unlock') === 'cortisol') user.cortisolUnlocked = true;
             
             calcMacros(); renderList(); updateHUD(); renderCortisolSection();
         }
 
-        // ==========================================
-        // MÓDULO CORTISOL (LÓGICA E RENDERIZAÇÃO)
-        // ==========================================
         function renderCortisolSection() {
             const container = document.getElementById('cortisol-section');
-            
-            // ESTADO 1: BLOQUEADO (O BOTÃO DO HYPE)
             if (!user.cortisolUnlocked) {
-                container.innerHTML = `
-                    <button onclick="openCortisolSelector()" class="w-full cortisol-card p-3 rounded flex items-center justify-between group relative overflow-hidden pulse-red">
-                        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')] opacity-10"></div>
-                        <div class="flex items-center gap-3 relative z-10">
-                            <div class="bg-red-900/50 p-2 rounded-full border border-red-500/50"><i data-lucide="biohazard" class="text-red-500 w-5 h-5"></i></div>
-                            <div class="text-left">
-                                <div class="text-[10px] text-red-400 font-tech tracking-widest font-bold">ALERTA BIOLÓGICO</div>
-                                <div class="text-sm font-bold text-white">RASTREAMENTO DE INFLAMAÇÃO</div>
-                            </div>
-                        </div>
-                        <div class="text-xs text-gray-400 font-tech flex items-center gap-1">
-                            <i data-lucide="lock" class="w-3 h-3"></i> ATIVAR
-                        </div>
-                    </button>
-                `;
-            } 
-            // ESTADO 2: DESBLOQUEADO MAS SEM MODO (SELECTOR)
-            else if (!user.activeCortisolMode) {
-                container.innerHTML = `
-                    <button onclick="openCortisolSelector()" class="w-full bg-gray-900 border border-dashed border-gray-600 p-3 rounded text-center hover:bg-gray-800 transition-all">
-                        <span class="text-xs text-gray-400 font-tech tracking-wider uppercase">SELECIONAR PROTOCOLO ATIVO</span>
-                        <div class="flex justify-center gap-4 mt-2 opacity-50">
-                            <span>🐡</span><span>🧱</span><span>🌙</span>
-                        </div>
-                    </button>
-                `;
-            }
-            // ESTADO 3: MODO ATIVO (DASHBOARD)
-            else {
+                container.innerHTML = `<button onclick="openCortisolSelector()" class="w-full cortisol-card p-3 rounded flex items-center justify-between group relative overflow-hidden pulse-red"><div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')] opacity-10"></div><div class="flex items-center gap-3 relative z-10"><div class="bg-red-900/50 p-2 rounded-full border border-red-500/50"><i data-lucide="biohazard" class="text-red-500 w-5 h-5"></i></div><div class="text-left"><div class="text-[10px] text-red-400 font-tech tracking-widest font-bold">ALERTA BIOLÓGICO</div><div class="text-sm font-bold text-white">RASTREAMENTO DE INFLAMAÇÃO</div></div></div><div class="text-xs text-gray-400 font-tech flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i> ATIVAR</div></button>`;
+            } else if (!user.activeCortisolMode) {
+                container.innerHTML = `<button onclick="openCortisolSelector()" class="w-full bg-gray-900 border border-dashed border-gray-600 p-3 rounded text-center hover:bg-gray-800 transition-all"><span class="text-xs text-gray-400 font-tech tracking-wider uppercase">SELECIONAR PROTOCOLO ATIVO</span><div class="flex justify-center gap-4 mt-2 opacity-50"><span>🐡</span><span>🧱</span><span>🌙</span></div></button>`;
+            } else {
                 let modeData = getCortisolData(user.activeCortisolMode);
-                container.innerHTML = `
-                    <div onclick="openCortisolSelector()" class="glass-card border-${modeData.color}-500/30 p-3 rounded relative overflow-hidden cursor-pointer group">
-                        <div class="absolute top-0 right-0 bg-${modeData.color}-500/20 px-2 py-0.5 rounded-bl text-[9px] text-${modeData.color}-300 font-tech font-bold uppercase">MODO: ${user.activeCortisolMode}</div>
-                        <div class="flex items-start gap-3 mt-1">
-                            <div class="text-3xl filter drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">${modeData.icon}</div>
-                            <div class="flex-1">
-                                <h3 class="text-sm font-bold text-white leading-tight">${modeData.title}</h3>
-                                <div class="mt-2 grid grid-cols-2 gap-2">
-                                    <div class="bg-black/40 p-1 rounded text-center border border-white/5">
-                                        <div class="text-[8px] text-gray-500 uppercase">${modeData.metric1Label}</div>
-                                        <div class="text-xs font-bold text-${modeData.color}-400 font-tech">${modeData.metric1Value}</div>
-                                    </div>
-                                    <div class="bg-black/40 p-1 rounded text-center border border-white/5">
-                                        <div class="text-[8px] text-gray-500 uppercase">${modeData.metric2Label}</div>
-                                        <div class="text-xs font-bold text-white font-tech">${modeData.metric2Value}</div>
-                                    </div>
-                                </div>
-                                <div class="mt-2 text-[9px] text-gray-400 italic border-t border-white/5 pt-1">
-                                    💡 <span class="text-white">${modeData.tip}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
+                container.innerHTML = `<div onclick="openCortisolSelector()" class="glass-card border-${modeData.color}-500/30 p-3 rounded relative overflow-hidden cursor-pointer group"><div class="absolute top-0 right-0 bg-${modeData.color}-500/20 px-2 py-0.5 rounded-bl text-[9px] text-${modeData.color}-300 font-tech font-bold uppercase">MODO: ${user.activeCortisolMode}</div><div class="flex items-start gap-3 mt-1"><div class="text-3xl filter drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">${modeData.icon}</div><div class="flex-1"><h3 class="text-sm font-bold text-white leading-tight">${modeData.title}</h3><div class="mt-2 grid grid-cols-2 gap-2"><div class="bg-black/40 p-1 rounded text-center border border-white/5"><div class="text-[8px] text-gray-500 uppercase">${modeData.metric1Label}</div><div class="text-xs font-bold text-${modeData.color}-400 font-tech">${modeData.metric1Value}</div></div><div class="bg-black/40 p-1 rounded text-center border border-white/5"><div class="text-[8px] text-gray-500 uppercase">${modeData.metric2Label}</div><div class="text-xs font-bold text-white font-tech">${modeData.metric2Value}</div></div></div><div class="mt-2 text-[9px] text-gray-400 italic border-t border-white/5 pt-1">💡 <span class="text-white">${modeData.tip}</span></div></div></div></div>`;
             }
             lucide.createIcons();
         }
@@ -449,52 +411,39 @@
             return data;
         }
 
-        function openCortisolSelector() {
-            document.getElementById('modal-cortisol').classList.remove('hidden');
-        }
-
+        function openCortisolSelector() { document.getElementById('modal-cortisol').classList.remove('hidden'); }
         function selectCortisolMode(mode) {
             if(!user.cortisolUnlocked) {
-                // SE NÃO PAGOU, MANDA PRO CHECKOUT
                 openModal('BIO-RACKING BLOQUEADO', 'Desbloqueie o Painel de Controle de Inflamação (Rosto, Barriga e Sono).', LINKS.cortisol);
                 document.getElementById('modal-cortisol').classList.add('hidden');
             } else {
-                // SE PAGOU, ATIVA
                 user.activeCortisolMode = mode;
                 document.getElementById('modal-cortisol').classList.add('hidden');
-                renderCortisolSection(); // Atualiza a tela principal
+                renderCortisolSection();
             }
         }
 
-        // ==========================================
-
-        // GERENCIAMENTO DE TELAS
         function switchScreen(screenName) {
             document.getElementById('screen-scanner').classList.add('hidden-screen');
             document.getElementById('screen-detox').classList.add('hidden-screen');
             document.getElementById('screen-scanner').classList.remove('active-screen');
             document.getElementById('screen-detox').classList.remove('active-screen');
-
             document.getElementById('screen-' + screenName).classList.remove('hidden-screen');
             document.getElementById('screen-' + screenName).classList.add('active-screen');
         }
 
         function handleDetoxClick() {
-            if(user.detoxUnlocked) {
-                switchScreen('detox');
-            } else {
-                openModal('PROTOCOLO DETOX', 'Desbloqueie as Receitas de Limpeza Metabólica.', LINKS.detox);
-            }
+            if(user.detoxUnlocked) switchScreen('detox');
+            else openModal('PROTOCOLO DETOX', 'Desbloqueie as Receitas de Limpeza Metabólica.', LINKS.detox);
         }
 
-        // LÓGICA DE NEGÓCIO
         function calcMacros() {
             let tmb = (10 * user.weight) + (6.25 * user.height) - (5 * user.age) + ((user.gender === 'M') ? 5 : -161);
             let maintenance = tmb * 1.35;
             if(user.goal === 'cut') user.targetKcal = Math.round(maintenance - 400);
             else if(user.goal === 'maintain') user.targetKcal = Math.round(maintenance);
             else user.targetKcal = Math.round(maintenance + 300);
-            user.targetProt = Math.round(user.weight * 2.0); // Ajustei levemente pra cima (2.0)
+            user.targetProt = Math.round(user.weight * 2.0); 
             let pKcal = user.targetProt * 4;
             user.targetFat = Math.round(user.weight * 0.9);
             let fKcal = user.targetFat * 9;
@@ -529,9 +478,7 @@
             updateHUD(); renderList();
         }
 
-        function resetSystem() {
-            if(confirm("Confirmar Reinicialização Diária?")) { consumed = {}; updateHUD(); renderList(); }
-        }
+        function resetSystem() { if(confirm("Confirmar Reinicialização Diária?")) { consumed = {}; updateHUD(); renderList(); } }
 
         function updateHUD() {
             let totalKcal = 0, totalP = 0, totalC = 0, totalF = 0;
